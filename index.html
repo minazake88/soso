@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام إدارة المصنع المتكامل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body
+    class="bg-gray-50 text-gray-900 transition-colors duration-300"
+  >
+    <!-- Main Application Container -->
+    <div id="app" class="flex min-h-screen flex-col p-4 md:p-8">
+      <!-- Header -->
+      <div
+        class="mb-6 flex flex-col rounded-xl bg-white p-4 shadow-xl border-b-4 border-blue-600"
+      >
+        <!-- الاسم في الأعلى -->
+        <h1
+          class="break-words text-center text-xl font-extrabold text-gray-900 mb-4"
+        >
+          Mina_Soliman 01127070634
+        </h1>
+
+        <!-- باقي العناصر -->
+        <div class="flex flex-col items-center gap-2 sm:flex-row sm:justify-start">
+          <p id="user-info-display" class="hidden text-sm text-gray-600 sm:inline">
+            مرحباً سجل بتسجيل جديد الان او احصل علي اشتراك لمده 14 يوم بشكل
+            تلقائي للاشتراك طول العام معنا اتصل علي 01127070634 فقط بسعر 20
+            دولار للسنه الواحده mr mina soliman , ...
+          </p>
+          <span
+            id="user-role-display"
+            class="hidden rounded-full bg-blue-600 py-1 px-3 text-sm font-extrabold text-white shadow-md"
+          >
+          </span>
+          <button
+            id="sign-out-btn"
+            class="hidden rounded-lg bg-red-500 py-2 px-4 font-bold text-white shadow-lg transition-all hover:bg-red-700"
+          >
+            <i class="fas fa-sign-out-alt ml-2"></i>تسجيل الخروج
+          </button>
+        </div>
+      </div>
+
+      <!-- Auth Section: Login/Signup Form - (Represents the conceptual Index/Login Page) -->
+      <div id="auth-section" class="flex flex-grow flex-col items-center justify-center">
+        <div
+          class="container-card w-full max-w-lg space-y-8 p-8 text-center border-t-8 border-blue-600"
+        >
+          <h2 class="mb-6 text-4xl font-extrabold text-blue-800">
+            مرحباً بك مجدداً
+          </h2>
+
+          <!-- Email/Password Login Form -->
+          <div
+            class="space-y-4 rounded-xl bg-blue-50 p-6 shadow-inner border border-blue-200"
+          >
+            <h3 class="text-xl font-bold text-blue-700">
+              الدخول بالبريد الإلكتروني
+            </h3>
+            <div>
+              <input
+                type="email"
+                id="auth-email"
+                placeholder="البريد الإلكتروني"
+                class="w-full rounded-lg border-2 border-blue-300 p-3 shadow-sm focus:border-blue-500"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                id="auth-password"
+                placeholder="كلمة المرور"
+                class="w-full rounded-lg border-2 border-blue-300 p-3 shadow-sm focus:border-blue-500"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-3 md:flex-row">
+              <button
+                id="email-signin-btn"
+                class="flex-grow rounded-lg bg-blue-600 p-3 font-bold text-white shadow-md transition-all hover:bg-blue-700"
+              >
+                <i class="fas fa-sign-in-alt ml-2"></i> تسجيل الدخول
+              </button>
+              <button
+                id="email-signup-btn"
+                class="flex-grow rounded-lg bg-green-600 p-3 font-bold text-white shadow-md transition-all hover:bg-green-700"
+              >
+                <i class="fas fa-user-plus ml-2"></i> تسجيل جديد
+              </button>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center">
+            <div class="absolute inset-0 flex items-center">
+              <span class="w-full border-t border-gray-300"></span>
+            </div>
+            <div class="relative bg-white px-4 text-sm font-medium text-gray-500">
+              أو
+            </div>
+          </div>
+
+          <!-- Third-Party Login Options -->
+          <button
+            id="google-signin-btn"
+            class="flex w-full items-center justify-center gap-3 rounded-lg bg-white p-3 font-bold text-gray-700 shadow-lg transition-all hover:bg-gray-100 border border-gray-300"
+          >
+            <svg class="h-6 w-6" viewBox="0 0 48 48">
+              <path
+                fill="#4285F4"
+                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+              ></path>
+              <path
+                fill="#34A853"
+                d="M43.611,20.083H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571l5.657,5.657C40.078,36.67,44,31.134,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+              ></path>
+              <path
+                fill="#FBBC05"
+                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+              ></path>
+              <path
+                fill="#EA4335"
+                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+              ></path>
+              <path fill="none" d="M0,0h48v48H0z"></path>
+            </svg>
+            تسجيل الدخول باستخدام جوجل
+          </button>
+          <button
+            id="anonymous-signin-btn"
+            class="mt-4 w-full rounded-lg bg-gray-600 p-3 font-bold text-white shadow-md transition-all hover:bg-gray-700"
+          >
+            <i class="fas fa-mask ml-2"></i> الدخول كزائر
+          </button>
+          <!-- Subscription Status Display on Auth Screen -->
+          <div
+            id="subscription-status-alert"
+            class="hidden rounded-xl bg-red-100 p-3 font-bold text-red-800 mt-4 border border-red-300"
+          >
+            انتهى اشتراكك. يرجى التواصل مع المسؤول لتجديده.
+          </div>
+        </div>
+      </div>
+
+      <div id="main-content" class="hidden flex flex-grow flex-col">
+        <!-- Navigation -->
+        <nav
+          class="mb-6 flex flex-wrap justify-center gap-2 rounded-xl bg-white p-4 shadow-xl md:gap-4 border-b-2 border-blue-200"
+        >
+          <button data-page="dashboard" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">لوحة التحكم</button>
+          <button data-page="cutting" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">القص</button>
+          <button data-page="workshops" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">الورش</button>
+          <button data-page="delivery" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">استلام القطع</button>
+          <button data-page="accounts" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">حسابات الورش</button>
+          <button data-page="sales" class="nav-button rounded-lg bg-green-600 py-3 px-6 font-bold text-white shadow-lg">المبيعات</button>
+          <button data-page="customers" class="nav-button rounded-lg bg-green-600 py-3 px-6 font-bold text-white shadow-lg">العملاء</button>
+          <button data-page="reports" class="nav-button rounded-lg bg-green-600 py-3 px-6 font-bold text-white shadow-lg">التقارير</button>
+          <button id="user-management-nav-btn" data-page="user-management" class="nav-button hidden rounded-lg bg-yellow-600 py-3 px-6 font-bold text-white shadow-lg">إدارة المستخدمين</button>
+          <button data-page="settings" class="nav-button rounded-lg bg-blue-600 py-3 px-6 font-bold text-white shadow-lg">الإعدادات</button>
+        </nav>
+        <main class="container mx-auto flex-grow">
+          <div id="message-box" class="hidden rounded-lg p-4 shadow-lg"></div>
+          <section id="dashboard-page" class="page container-card active space-y-6"></section>
+          <section id="cutting-page" class="page container-card"></section>
+          <section id="workshops-page" class="page container-card"></section>
+          <section id="delivery-page" class="page container-card"></section>
+          <section id="accounts-page" class="page container-card"></section>
+          <section id="sales-page" class="page container-card"></section>
+          <section id="customers-page" class="page container-card"></section>
+          <section id="reports-page" class="page container-card"></section>
+          <section id="user-management-page" class="page container-card"></section>
+          <section id="settings-page" class="page container-card"></section>
+        </main>
+      </div>
+    </div>
+    <!-- Modals -->
+
+    <!-- Invoice Modal -->
+    <div id="invoice-modal" class="modal fixed inset-0 z-[250] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    
+    <!-- Customer Details Modal -->
+    <div id="customer-details-modal" class="modal fixed inset-0 z-[240] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+
+
+    <!-- Price Modal -->
+    <div id="price-modal" class="modal fixed inset-0 z-60 flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Assign Modal -->
+    <div id="assign-modal" class="modal fixed inset-0 z-50 flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Transactions Modal -->
+    <div id="transactions-modal" class="modal fixed inset-0 z-[100] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Reset Confirm Modal -->
+    <div id="reset-confirm-modal" class="modal fixed inset-0 z-[90] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-red-600">
+        <h3 class="modal-header mb-4 text-xl font-bold text-red-600">تحذير!</h3>
+        <div class="modal-body"><p class="mb-6">هل أنت متأكد أنك تريد حذف جميع بيانات المصنع؟ هذه العملية لا يمكن التراجع عنها.</p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-reset-btn" class="w-full rounded-lg bg-red-600 p-3 font-bold text-white transition-all hover:bg-red-700">تأكيد الحذف</button>
+          <button onclick="window.closeModal('reset-confirm-modal')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- Message Modal -->
+    <div id="message-modal" class="modal fixed inset-0 z-[120] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-blue-600">
+        <h3 id="message-modal-title" class="modal-header mb-4 text-xl font-bold"></h3>
+        <div class="modal-body"><p id="message-modal-content" class="mb-6"></p></div>
+        <div class="modal-footer"><button onclick="window.closeModal('message-modal')" class="w-full rounded-lg bg-blue-600 p-3 font-bold text-white hover:bg-blue-700">موافق</button></div>
+      </div>
+    </div>
+    <!-- Revert Confirm Modal -->
+    <div id="revert-modal-confirm" class="modal fixed inset-0 z-[80] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-red-600">
+        <h3 class="modal-header mb-4 text-xl font-bold">تأكيد الإرجاع</h3>
+        <div class="modal-body"><p id="revert-confirm-text" class="mb-6"></p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-revert-btn" class="w-full rounded-lg bg-red-600 p-3 font-bold text-white hover:bg-red-700">تأكيد</button>
+          <button onclick="window.closeModal('revert-modal-confirm')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- Detailed Accounts Modal -->
+    <div id="detailed-accounts-modal" class="modal fixed inset-0 z-[70] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Delete Transaction Confirm Modal -->
+    <div id="delete-transaction-confirm-modal" class="modal fixed inset-0 z-[110] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-red-600">
+        <h3 class="modal-header mb-4 text-xl font-bold text-red-600">تحذير!</h3>
+        <div class="modal-body"><p class="mb-6">هل أنت متأكد من حذف هذه المعاملة؟ هذه العملية لا يمكن التراجع عنها.</p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-delete-transaction-btn" class="w-full rounded-lg bg-red-600 p-3 font-bold text-white transition-all hover:bg-red-700">تأكيد الحذف</button>
+          <button onclick="window.closeModal('delete-transaction-confirm-modal')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- Delivery History Modal -->
+    <div id="delivery-history-modal" class="modal fixed inset-0 z-[130] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Delete Cutting Confirm Modal -->
+    <div id="delete-cutting-confirm-modal" class="modal fixed inset-0 z-[195] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-red-600">
+        <h3 class="modal-header mb-4 text-xl font-bold text-red-600">تأكيد الحذف</h3>
+        <div class="modal-body"><p class="mb-6">هل أنت متأكد من حذف هذه القصة؟ لا يمكن التراجع عن هذه العملية.</p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-delete-cutting-btn" class="w-full rounded-lg bg-red-600 p-3 font-bold text-white transition-all hover:bg-red-700">تأكيد الحذف</button>
+          <button onclick="window.closeModal('delete-cutting-confirm-modal')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- Detailed Accounts History Modal -->
+    <div id="detailed-accounts-history-modal" class="modal fixed inset-0 z-[180] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- Delete Delivery Confirm Modal -->
+    <div id="delete-delivery-confirm-modal" class="modal fixed inset-0 z-[190] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-red-600">
+        <h3 class="modal-header mb-4 text-xl font-bold text-red-600">تأكيد الحذف</h3>
+        <div class="modal-body"><p class="mb-6">هل أنت متأكد من حذف هذه العملية؟</p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-delete-delivery-btn" class="w-full rounded-lg bg-red-600 p-3 font-bold text-white transition-all hover:bg-red-700">تأكيد الحذف</button>
+          <button onclick="window.closeModal('delete-delivery-confirm-modal')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- New modal for full cutting history -->
+    <div id="completed-cutting-history-modal" class="modal fixed inset-0 z-[200] flex items-start justify-center bg-gray-600 bg-opacity-50"></div>
+    <!-- New modal for confirming quantity increase -->
+    <div id="increase-cutting-confirm-modal" class="modal fixed inset-0 z-[210] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-yellow-600">
+        <h3 class="modal-header mb-4 text-xl font-bold text-yellow-600">تنبيه!</h3>
+        <div class="modal-body"><p class="mb-6" id="increase-cutting-confirm-text"></p></div>
+        <div class="modal-footer flex justify-center gap-4">
+          <button id="confirm-increase-cutting-btn" class="w-full rounded-lg bg-yellow-600 p-3 font-bold text-white transition-all hover:bg-yellow-700">تأكيد وزيادة</button>
+          <button onclick="window.closeModal('increase-cutting-confirm-modal')" class="w-full rounded-lg bg-gray-400 p-3 font-bold text-white">إلغاء</button>
+        </div>
+      </div>
+    </div>
+    <!-- New Subscription Management Modal -->
+    <div id="subscription-management-modal" class="modal fixed inset-0 z-[220] flex items-start justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content-wrapper container-card border-t-4 border-blue-600">
+        <div class="modal-header mb-4 border-b pb-3"><h3 class="text-xl font-bold">تعديل اشتراك المستخدم وصلاحيات الوصول</h3><p id="sub-modal-username" class="mt-2 text-gray-700"></p></div>
+        <div class="modal-body space-y-4">
+          <div class="rounded-xl bg-gray-100 p-4 shadow-inner border border-gray-200">
+            <h4 class="mb-2 border-b pb-1 text-lg font-bold text-gray-800">الاشتراك والوظيفة:</h4>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div><label for="sub-expiry-date" class="block text-sm font-medium">تاريخ انتهاء الاشتراك</label><input type="date" id="sub-expiry-date" class="w-full rounded-lg border p-3"/></div>
+              <div><label class="flex h-full items-center space-x-2 space-x-reverse pt-6"><input type="checkbox" id="sub-is-admin" class="form-checkbox h-5 w-5 rounded text-red-600"/><span class="font-bold text-gray-700">تعيين كمدير (Admin)</span></label></div>
+            </div>
+          </div>
+          <div class="rounded-xl bg-blue-50 p-4 shadow-inner border border-blue-200">
+            <h4 class="mb-3 border-b pb-1 text-lg font-bold text-blue-800">صلاحيات الوصول إلى القوائم الرئيسية:</h4>
+            <div id="permissions-checkbox-container" class="grid grid-cols-2 gap-3 md:grid-cols-3"></div>
+          </div>
+        </div>
+        <div class="modal-footer mt-6 flex justify-end gap-4 border-t pt-4">
+          <button id="save-subscription-btn" class="rounded-lg bg-green-600 p-3 text-white hover:bg-green-700">حفظ التعديل</button>
+          <button onclick="window.closeModal('subscription-management-modal')" class="rounded-lg bg-gray-400 p-3 text-white hover:bg-gray-500">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>

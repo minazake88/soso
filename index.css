@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+body {
+  font-family: 'Tajawal', sans-serif;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+.container-card {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15); /* Stronger shadow for professionalism */
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+}
+.nav-button {
+  border-radius: 0.75rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.nav-button.active {
+  background-color: #1e40af !important; /* Darker blue for active state */
+}
+input,
+select,
+button,
+textarea {
+  border-radius: 0.75rem;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+.page {
+  display: none;
+}
+.page.active {
+  display: block;
+}
+#message-box {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+.modal {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  /* Fix for mobile: Ensures modal container takes full screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto; /* Allows scrolling the background if needed, but the main fix is inside the modal card */
+}
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.hidden {
+  display: none;
+}
+/* Style for the dashboard cards */
+.card {
+  border: none;
+  transition: transform 0.3s;
+  cursor: default;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+/* Style for disabled buttons with permission issues */
+button:disabled,
+button[disabled],
+.nav-button:disabled,
+.nav-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: grayscale(100%);
+}
+/* New general modal fix: Ensure inner content can scroll */
+.modal-content-wrapper {
+  width: 95%; /* Adjust width for mobile */
+  max-width: 700px; /* Max width for desktop */
+  margin: 2.5vh auto; /* Center vertically and push down slightly */
+  /* Crucial fix: define max height relative to viewport and enable inner scroll */
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+}
+.modal-body {
+  overflow-y: auto; /* Scrollable content area */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.modal-header,
+.modal-footer {
+  flex-shrink: 0; /* Prevent header/footer from shrinking */
+}
